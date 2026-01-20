@@ -1,5 +1,7 @@
 package day01; // 현재 클래스가 위치한 폴더(패키지)명
 
+import java.util.Scanner;
+
 public class Practice1 { // class start
     // m + 엔터 , 자바실행은 main함수(스레드) 로 부터 (실행)흐름 시작된다.
     public static void main(String[] args) { // main start
@@ -39,6 +41,32 @@ public class Practice1 { // class start
         System.out.printf("%-3s %-5s %-10s \n" , "번호" , "작성자" , "방문록");      // %3s : 3자리를 차지하는 문자열 자리 , 오른쪽정렬
         System.out.printf("%-4d %-5s %-10s \n" , num , writer , content );       // %-3s : 왼쪽정렬
         System.out.printf("==============================\n");
+
+        // 8. 입력받기 , 준비물 : Scanner 변수명 = new Scanner( System.in );
+        Scanner scan = new Scanner( System.in); // *
+
+        System.out.print("8] 이름 : ");   String 이름 = scan.next(); // .next() console에서 입력받은 자료를 문자열로 반환
+        System.out.print("8] 나이 : ");   int 나이 = scan.nextInt(); // .nextInt() console에서 입력받은 자료를 정수로 반환
+        System.out.printf("%s님의 나이는 %d세 입니다.\n", 이름 , 나이 ); // 유재석님의 나이는 51세 입니다.
+        // 9. Scanner 객체는 동일한 { } 내 하나만 존재하면 된다.
+        // 주의할점 nextLine() 앞에 다른 next() 존재하면 의미없는 nextLine() 필요하다.
+        System.out.print("9] 게시물번호 : ");    int bno = scan.nextInt();       scan.nextLine();
+        System.out.print("9] 제목 : ");         String title = scan.nextLine();
+        System.out.print("9] 내용 : ");         String comment = scan.nextLine();
+        System.out.printf("[ %d번 게시물] \n" , bno );
+        System.out.printf("제목 : %s \n" , title );
+        System.out.printf("내용 : %s \n" , comment );
+        // 10. 문자 입력받기 , .next().chatAt( 0 )
+        System.out.print("10] 성별 : ");      char 성별 = scan.next().charAt( 0 ); // 입력받은 첫글자만 반환
+        System.out.printf("입력하신 성별은 %s 입니다. \n" , 성별 );
+        // 11. 이름 (String), 나이 (int), 키 (double), 프로그래머 여부 (boolean)
+        System.out.print("[11] 이름 : ");     String 성함 = scan.next();
+        System.out.print("[11] 나이 : ");     int 연령 = scan.nextInt();
+        System.out.print("[11] 키 : ");      double 신장 = scan.nextDouble();
+        System.out.print("[11] 프로그래머 여부 : "); boolean 여부 = scan.nextBoolean();
+        System.out.println("--------- 자기 소개 ---------- ");
+        System.out.println("이름 : " + 성함 );          System.out.println("나이 : " + 연령 );
+        System.out.println("키 : " + 신장 );           System.out.println("프로그래머 여부 : " + 여부 );
 
     } // main end
 } // class end
