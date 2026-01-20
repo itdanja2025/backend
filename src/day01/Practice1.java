@@ -6,7 +6,7 @@ public class Practice1 { // class start
 
         // 1. 리터럴 : 개발언어 에서 미리 정해진 값/자료 들을 = 상수
         System.out.println( 25 );         // sout + 엔터
-        System.out.println( "홍길동");     // 문자열은 " " 감싼 자료 , 문자는 ' ' 감싼 자료
+        System.out.println( "홍길동" );     // 문자열은 " " 감싼 자료 , 문자는 ' ' 감싼 자료
 
         // 2. 변수 : 하나의 자료를 저장하는 메모리(저장소) 공간
         int age = 10; // 타입(int) 변수명(age) = 값(10);  // 자바는 문장마다 끝에 ; 세미콜론 넣는다.
@@ -18,10 +18,27 @@ public class Practice1 { // class start
 
         // 4. + 기호는 2가지 기능 갖는다. (1) +더하기 , 숫자+숫자 (2) 연결 , 숫자+문자
         System.out.println( "제 이름은 " + name + " , 나이는 " + age2 + "세, 키는 " + height+"cm 입니다.");
-
         // 5. 형식 printf , 문자열내 복잡한 수식이나 변수가 들어가는 자리에 형식 으로 표현
-        // %d 정수 %f 실수 %s 문자열 %c 문자  , 이스케이프/제어 문자
+        // %d 정수 %f 실수 %s 문자열 %c 문자  ,
         System.out.printf( "제 이름은 %s , 나이는 %d세, 키는 %.1fcm 입니다. \n" , name , age2 , height );
+
+        // 6. 이스케이프/제어 문자 : 특정한 기능을 가진 문자들을 출력할때 사용하는 \백슬래시
+        // \ : 원화기호(엔터위에) , | : shift+원화기호(엔터위에) ,
+        System.out.println( "|\\_/| \n|q p|   /} \n( 0 )\"\"\"\\ \n|\"^\"`    | \n||_/=\\\\__|" );
+        // vs
+        System.out.println("|\\_/|");
+        System.out.println("|q p|   /}");
+        System.out.println("( 0 )\"\"\"\\");
+        System.out.println("|\"^\"`    |");
+        System.out.println("||_/=\\\\__|");
+        // 7.
+        int num = 1;    // 정수 1 를 저장하고 있는 int 타입 'num' 변수 선언
+        String writer = "유재석"; // 문자열 "유재석" 를 저장하고 있는 String타입 'writer' 변수 선언
+        String content = "안녕하세요!"; // 문자열 "안녕하세요!"를 저장하고 있는 String타입 'content' 변수 선언
+        System.out.printf("=========== 방문록 ============\n");
+        System.out.printf("%-3s %-5s %-10s \n" , "번호" , "작성자" , "방문록");      // %3s : 3자리를 차지하는 문자열 자리 , 오른쪽정렬
+        System.out.printf("%-4d %-5s %-10s \n" , num , writer , content );       // %-3s : 왼쪽정렬
+        System.out.printf("==============================\n");
 
     } // main end
 } // class end
@@ -64,7 +81,7 @@ String content = "안녕하세요!"; // 문자열 "안녕하세요!"를 저장�
 예시 :
 =========== 방문록 ============
 번호   작성자   방문록
-1      유재석   안녕하세요!
+1     유재석   안녕하세요!
 ============================
 */
 
