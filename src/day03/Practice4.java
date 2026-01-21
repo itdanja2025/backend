@@ -35,9 +35,83 @@ public class Practice4 {
         else if(성별번호 == '2' || 성별번호 == '4'){   System.out.println("여자"); }
         else{ System.out.println("잘못된 입력 ");  }
 
+        // [6.도경] 다중 조건 선택 : if if if vs if ~ else if ~ else if
+        System.out.println("6] 점수를 입력하세요 : "); int score = scan.nextInt();
+        if( score >= 900 ) {System.out.println("A급 경품 ");}
+        else if( score >= 700 ) {System.out.println("B급 경품");}
+        else if( score >= 500 ){ System.out.println("C급 경품");}
+        else{ System.out.println("참가상"); }
+        // [7.연지] 논리 가 값으로 흐름 제어
+        System.out.println("역할 : "); String role = scan.next();
+        if( role.equals( "admin") ){  System.out.println("모든 기능에 접근 할 수 있습니다.");}
+        else if (role.equals("editor")) { System.out.println("콘텐츠 수정 및 생성 기능에 접근할 수 있습니다.");}
+        else if( role.equals("viewer")){ System.out.println("콘텐츠 조회만 가능합니다.");}
+        else{ System.out.println("정의되지 않은 역할 입니다. "); }
+        // vs 논리 없으면 switch 문법 사용 가능
+        switch ( role ) {
+            case "admin" : System.out.println("모든 기능에 접근 할 수 있습니다."); break;
+            case "editor" : System.out.println("콘텐츠 수정 및 생성 기능에 접근할 수 있습니다."); break;
+            case "viewer" : System.out.println("콘텐츠 조회만 가능합니다."); break;
+            default: System.out.println("정의되지 않은 역할 입니다. ");
+        }
+        // [8.재현]
+        System.out.println("나이를 입력하세요 : "); int ageage = scan.nextInt();
+        if( ageage <8 ) { System.out.println("무료");}
+        else if( ageage <=19 ){ System.out.println("5000원");}
+        else if( ageage <65 ){  System.out.println("10000원");}
+        else{ System.out.println("3000원");}
+        // [9.성은]
+        System.out.println("점수를 입력하세요 : "); int num = scan.nextInt();
+        if( num >= 90 ) { System.out.println("A");}
+        else if( num >= 80 ){ System.out.println("B");}
+        else if( num >= 70 ){  System.out.println("C");}
+        else{ System.out.println("재시험"); }
+        // [10.소영]  1% -> 0.01 , 10% -> 0.1 , 100% -> 1   /   소수점(double) 과 정수(int) 계산하면 결과는 double
+        System.out.println("총 구매 금액을 입력하세요 : "); int 구매금액 = scan.nextInt();
+        double 최종결제금액 = 구매금액;
+        if( 구매금액 >= 50000 ){ 최종결제금액 = 구매금액 * 0.9; }
+        else if( 구매금액 >= 30000){ 최종결제금액 = 구매금액 * 0.95; }
+        else if( 구매금액 >= 10000 ){ 최종결제금액 = 구매금액 * 0.99; }
+        System.out.println("최종결제금액 : " + (int)최종결제금액 ); // 강제 타입 변환
+        // [11.태현]
+        System.out.println("11.월(1~12월)을 입력하세요 : "); int a11 = scan.nextInt();
+        if( a11 >=3 && a11 <= 5 ){  System.out.println("봄");}
+        else if( a11 >=6 && a11 <=8 ){System.out.println("여름");}
+        else if( a11 >=9 && a11 <=11 ){ System.out.println("가을");}
+        else if( a11 == 12 || a11 == 1 || a11 == 2 ) { System.out.println("겨울"); }
+        // vs switch
+        switch ( a11 ){
+            case 3: case 4: case 5:  System.out.println("봄"); break;
+            case 6: case 7: case 8:  System.out.println("여름"); break;
+            case 9: case 10: case 11 :  System.out.println("가을"); break;
+            case 12 : case 1 : case 2 :  System.out.println("겨율"); break;
+        }
+        // [12.준현]
+        System.out.println("12] 정수1 : "); int first = scan.nextInt();
+        System.out.println("12] 정수2 : "); int two = scan.nextInt();
+        System.out.println("12] 정수2 : "); int three = scan.nextInt();
+        if( first >= two ) {
+            if( first >= three ){  System.out.println( first );}
+            else{  System.out.println( three );}
+        }else{
+            if( two >= three ){System.out.println( two );}
+            else{System.out.println(three );}
+        }
+        // vs 변수 활용
+        int max = first;
+        if( max <= two ){ max = two; }
+        if( max <= three ){ max = three; }
+        System.out.println( max );
 
-    }
+        // [13.용성]
+        System.out.println("13] 연도 입력하세요 : "); int year = scan.nextInt();
+        if( (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ){System.out.println("윤년");}
+        else{ System.out.println("평년"); }
+
+
+    } // main end
 }
+
 
 /*[실습] * 제출용 */
 /*[문제 1] Scanner를 이용해 두 개의 점수(int)를 입력받아 총점을 계산하세요.
