@@ -47,6 +47,42 @@ public class Practice3 { // class start
         String result5= name1.equals("유재석") ? name1+"(방장)" : name1; // [2처리]
         System.out.println(result5);
 
+        // [10]
+        // 1. 데이터 입력 방식 선택 : Scanner를 이용해 삼각형의 밑변과 높이를 각각 double로 입력받아
+        // scan.nextDouble(); // double로 입력받아
+        System.out.print("10] 밑변 : "); double 밑변 = scan.nextDouble(); // (저장)추후에 계산 하기위해서
+        System.out.print("10] 높이 : "); double 높이 = scan.nextDouble(); // (저장)추후에 계산 하기위해서
+        // 2. 처리 로직 : 삼각형의 넓이를 계산
+        double 계산결과 = 밑변 * 높이 / 2.0; // (저장) 계산식 결과를 저장한다.
+        // 3. 출력하는 방식 선택 : 출력
+        System.out.println("계산결과 = " + 계산결과); // soutv + 자동완성
+        // [11] [문제 11] Scanner를 이용해 섭씨 온도를 double로 입력받아, 화씨 온도로 변환하여 출력하시오.
+        System.out.print("11] 섭씨 : ");  double 섭씨 = scan.nextDouble(); // 입력받아 저장
+        double 화씨 = (섭씨 * 9.0 / 5.0) + 32; // 계산식 이후에 double 타입에 저장
+        System.out.println("화씨 = " + 화씨);
+        // [12] Scanner를 이용해 태어난 년도(int)를 입력받아, 2025년 기준 현재 나이를 계산하여 출력하시오.
+        System.out.print("12] 태어난년도 : "); int 태어난년도 = scan.nextInt();
+        int 현재나이 = 2026 - 태어난년도;
+        System.out.println("현재나이 = " + 현재나이);
+        // [13] Scanner를 이용해 키(cm)와 몸무게(kg)를 각각 double로 입력받아, BMI 지수를 계산하여 출력하시오.
+        System.out.print("13] 키 : "); double 키 = scan.nextDouble();
+        System.out.print("13] 몸무게 : "); double 몸무게 = scan.nextDouble();
+        double BMI = 몸무게 / ( 키/100.0) * ( 키/100.0);
+        System.out.println("BMI = " + BMI);
+        // [14 용성] 삼항연산자 유추 : ~~ 이면/하면 등 ( 조건 ) 문자(true) 아니면/그렇지않으면 등 문자(false)
+        // Scanner를 이용해 아이디와 이메일을 String으로 입력받습니다. 아이디가 "admin"이거나 또는 이메일이 "admin@test.com"이면 "관리자", 그렇지 않으면 "일반 사용자"를 출력하시오.
+        System.out.println("아이디 : ");    String id14 = scan.next();
+        System.out.println("비밀번호 : ");  String pw14 = scan.next();
+        String result14 = ( id14.equals("admin") || (pw14.equals("admin@test.com") ) ) ? "관리자" : "일반 사용자";
+        System.out.println("result14 = " + result14);
+        // [15 환빈]  100점 만점의 점수(int)를 입력받아, 삼항연산자 중첩 ( ~~ 이면 "A" ~~ 이면 "B" ~~ 이면 "C" )
+        System.out.println(" 점수 : "); int score = scan.nextInt();
+        System.out.println( score >=90 ? "A" : score >= 80 ? "B" : score < 70 ? "C" : "" );
+        // [16 지성] 범위논리는 && 사용한다. 20 ~ 29  , 20<=age=<29  -> age >= 20 && age <= 29
+        System.out.println("======================= 문제16 ======================== ");
+        System.out.println(" 나이를 입력하세요 :" ); int age = scan.nextInt();
+        System.out.println( age >= 20 && age <= 29 ? "이벤트 대상입니다" : "이벤트 대상이 아닙니다.");
+
     } // main end
 } // class end
 
