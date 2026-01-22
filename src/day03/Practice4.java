@@ -108,6 +108,24 @@ public class Practice4 {
         if( (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ){System.out.println("윤년");}
         else{ System.out.println("평년"); }
 
+        // [14.] 스왑 : 두 변수간의 자료 교환 , int temp = data1;  data1 = data2; data2 = temp;
+        // { } 안에서 선언된 변수는 지역변수 특징 갖는다.
+        System.out.println("14] 정수1 입력하세요 : "); int data1 = scan.nextInt();
+        System.out.println("14] 정수2 입력하세요 : "); int data2 = scan.nextInt();
+        System.out.println("14] 정수3 입력하세요 : "); int data3 = scan.nextInt();
+        if( data1 > data2 ){ int temp = data1 ; data1 = data2 ; data2 = temp; }
+        if( data1 > data3 ){ int temp = data1 ; data1 = data3 ; data3 = temp; }
+        if( data2 > data3 ){ int temp = data2 ; data2 = data3 ; data3 = temp; }
+        System.out.printf( " %d   %d   %d \n" , data1 , data2 , data3 );
+
+        // [15.] 활용 : 경우의수 찾기 연습
+        // (1) p1 이기는 수 : p1 == 0 && p2 == 2   ||   p1  == 1 && p2 == 0  ||  p1 == 3 && p2 == 1
+        // (2) p1 이기는 수 : p1 == ( p2 + 1 ) % 3     ,  ex]   (2+1)%3 == 0
+        System.out.println("15] 가위[0] 바위[1] 보[2] 입력 : "); int p1 = scan.nextInt();
+        System.out.println("15] 가위[0] 바위[1] 보[2] 입력 : "); int p2 = scan.nextInt();
+        if(   p1  == ( p2 + 1 ) % 3 ) { System.out.println("플레이어1 승리"); } // if : 플레이어1 이기는 수
+        else if( p1 == p2 ){  System.out.println("무승부"); }
+        else{  System.out.println("플레이어2 승리"); }
 
     } // main end
 }
