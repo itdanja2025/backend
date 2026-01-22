@@ -113,19 +113,71 @@ public class Practice5 {
         }
         System.out.println( july1 +"만원");
 
-        for( int i = 1 ; i <= july2/100 ; i++ ){ System.out.print("■"); }
+        for( int i = 1 ; i <= july2/100 ; i++ ){
+            System.out.print("■");
+        }
         System.out.println( july2 +"만원");
 
-        for( int i = 1 ; i <= july3/100 ; i++ ){ System.out.print("■"); }
+        for( int i = 1 ; i <= july3/100 ; i++ ){
+            System.out.print("■");
+        }
         System.out.println( july3 +"만원");
 
-        for( int i = 1 ; i <= july4/100 ; i++ ){ System.out.print("■"); }
+        for( int i = 1 ; i <= july4/100 ; i++ ){
+            System.out.print("■");
+        }
         System.out.println( july4 +"만원");
 
+        // [1] 화면 설계 : 내가 만들고자 하는 청사진( ex] 피그마 )
+        System.out.println("---------------------------------");
+        System.out.println("1:입금 | 2:출금 | 3:잔고 | 4:종료");
+        System.out.println("선택> 1");
+        System.out.println("입금액> 10000");
+        System.out.println("---------------------------------");
+        System.out.println("1:입금 | 2:출금 | 3:잔고 | 4:종료");
+        System.out.println("선택> 3");
+        System.out.println("잔고> 10000");
+        System.out.println("---------------------------------");
+        System.out.println("1:입금 | 2:출금 | 3:잔고 | 4:종료");
+        System.out.println("선택> 4");
+        System.out.println( "프로그램을 종료합니다.");
+            // 1. -> 청사진에서 반복되는 화면이 있다. ---> 반복문으로 변경
+            // 2. -> 1 / 3 / 4 입력받은 자료
+//        for( ; ; ){
+//            System.out.println("---------------------------------");
+//            System.out.println("1:입금 | 2:출금 | 3:잔고 | 4:종료");
+//            System.out.print("선택> ");
+//            Scanner scan = new Scanner(System.in);  int ch = scan.nextInt(); // 무한입력 // html 다르게 클릭이벤트없음
+//        }
+        // [2] 데이터 설계 : 그 화면에서 필요한 데이터/저장! ( ex] 엑셀/표 )
+            // 모든 화면에서 공용/누적 사용하는 저장 값 = 잔고
+        // [3] 기능 설계 : 그 화면에서 버튼/이벤트 했을때 무엇을지
+            // 1 선택시 : 입력받은 값을 잔고에 +=
+            // 2 선택시 : 입력받은 값을 잔고에 -= , 단 if 사용해서 조건확인 : 입력받은값 <= 잔고
+            // 3 선택시 : 잔고 출력
+            // 4 선택시 : 프로그램/무한루프 종료
+        // [4] 구현
+        int 잔고 = 0; // for 밖에 선언한 이유는 for 안에 넣으면 계속 0으로 초기화/선언 되므로
+        for( ; ; ){
+            System.out.println("---------------------------------");
+            System.out.println("1:입금 | 2:출금 | 3:잔고 | 4:종료");
+            System.out.print("선택> ");
+            Scanner scan = new Scanner(System.in);  int ch = scan.nextInt(); // 무한입력 // html 다르게 클릭이벤트없음
+            if( ch == 1 ){   // 기능1
+                System.out.print("입금액 : ");   int 입금액 = scan.nextInt();
+                잔고 += 입금액;      System.out.println("입금 성공");
 
+            }else if( ch == 2){ // 기능2
+                System.out.print("출금액 : ");  int 출금액 = scan.nextInt();
+                if( 출금액 <= 잔고 ){ 잔고 -= 출금액;                 System.out.println("출금 성공"); }
+                else{ System.out.println("잔고가 부족합니다.");  }
 
-
-
+            }else if( ch == 3 ){ // 기능3
+                System.out.println( 잔고 );
+            }else if( ch == 4 ){ // 기능4
+                System.out.println("프로그램 종료");              break;
+            }
+        } // for end
 
 
     } // main end
