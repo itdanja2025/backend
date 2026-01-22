@@ -75,6 +75,59 @@ public class Practice5 {
             }
             System.out.println(); // println 줄바꿈 된다.
         }
+
+        // [9]
+            // (1) 무한루프
+        // for( ; ; ){ System.out.println( "무한루프 "); }
+            // (2) 무한입력
+        /*
+        for( ; ; ){
+            Scanner scan = new Scanner(System.in);
+            System.out.print("입력 : "); String str = scan.next();
+        }
+        */
+            // (3) 무한루프 종료 조건 : "end" 입력시
+            // (4) (반복)입력개수 : for 밖에서 출력할 예정이라서 for 밖에서 변수 선언
+        int count = 0; // 입력받은 개수 변수
+        for( ; ; ){
+            Scanner scan = new Scanner( System.in );
+            System.out.print( (count+1) +"회 입력 : ");
+            String str = scan.next();
+            if( str.equals("end") ){  break; } // 무한루프 종료
+            count++; // 입력받은 개수 1증가 (증감연산자)
+        } // for end
+        System.out.println("count = " + count);
+
+
+
+
+        // [10]
+        int july1 = 3532100;    int july2 = 9123700;
+        int july3 = 5183400;    int july4 = 11738700;
+        // (1) 만원 단위로 변경/수정
+        july1 = july1/10000;    july2 = july2/10000;
+        july3 = july3/10000;    july4 = july4/10000;
+        // (2) 백만원 1개당 '■' 1개 출력 반목문
+        for( int i = 1 ; i <= july1/100 ; i++ ){
+            System.out.print("■");
+        }
+        System.out.println( july1 +"만원");
+
+        for( int i = 1 ; i <= july2/100 ; i++ ){ System.out.print("■"); }
+        System.out.println( july2 +"만원");
+
+        for( int i = 1 ; i <= july3/100 ; i++ ){ System.out.print("■"); }
+        System.out.println( july3 +"만원");
+
+        for( int i = 1 ; i <= july4/100 ; i++ ){ System.out.print("■"); }
+        System.out.println( july4 +"만원");
+
+
+
+
+
+
+
     } // main end
 }
 
