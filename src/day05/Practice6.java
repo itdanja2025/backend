@@ -70,6 +70,38 @@ public class Practice6 {
         else if( check == 1 ){ System.out.println("구매 완료");  }
         else if( check == 2 ){ System.out.println("재고 부족");  }
 
+        //[9]
+        String[] movieNames = {"히든페이스", "위키드", "글래디에이터2", "청설"};
+        int[] movieRatings = {8, 4, 7, 6};
+        for( int index = 0 ; index <= movieNames.length-1 ; index++ ){ // 1) 0부터 마지막인덱스 이하까지 1씩증가
+            String movie = movieNames[index]; // 2) index번째 영화이름 가져오기
+            System.out.print( movie ); // print : 줄바꿈 안됨.
+            for ( int star = 1 ; star <= 10 ; star++ ){ // 3) 총 10개의 별 반복
+                if( star <= movieRatings[index] ){ // 4) 만약에 현재 별 순서가 평점보다 이하이면
+                    System.out.print("★"); // 검은별
+                }else{   System.out.print("☆"); } //  // 아니면  흰별
+            }
+            System.out.println(); // index가 바뀔때마다 줄바꿈
+        } // for end
+
+        // [10]
+        String[] carNumbers = {"210어7125", "142가7415", "888호8888", "931나8234"};
+        int[] usageMinutes = {65, 30, 140, 420};
+        int money = 0; // 1) money 요금 변수 선언
+        for( int index = 0 ; index <= carNumbers.length-1 ; index++ ){
+            String car = carNumbers[index]; // index번째 차량번호 추출
+            System.out.print( car+" \t " );
+            int useTime = usageMinutes[index]; // index번째 사용시간 추출
+            if( useTime <= 30 ){ money = 1000; }
+            else{
+                money = ( useTime - 30 ) / 10 ; // 사용시간 나누기 10분
+                money *= 5000; // 10분당 5000원
+                money += 1000; // 기본요금 1000원
+            }
+            // 만약에 금액이 2만원 이상이면 2만원 아니면 금액그대로
+            money = money > 20000 ? 20000 : money;
+            System.out.println( useTime+"분 주차 , 요금 : "+money+"원");
+        } // for end
 
 
 
