@@ -38,8 +38,31 @@ public class Practice7 {
         account1.balance -= 3000;
         System.out.println("account1.balance = " + account1.balance);
 
+        // [5]
+        Product product1 = new Product();   // 객체1생성
+            product1.name = "새우깡";  product1.price = 1500;
+        Product product2 = new Product();   // 객체2생성
+            product2.name = "콜라";   product2.price = 2000;
+        if( product1.price > product2.price ){ // 만약에 첫번째 제품의 가격이 더 크면
+            System.out.println( product1 );
+        }else{ System.out.println( product2 );    }
 
+        // [6]
+        Member member1 = new Member();
+        member1.id = "admin";   member1.isLogin = false;
+        System.out.println("member1.isLogin = " + member1.isLogin);
+        member1.isLogin = true;
+        System.out.println("member1.isLogin = " + member1.isLogin);
 
+        // [7]
+        Television television1 = new Television();
+        television1.channel = 7;        television1.volume = 20;
+        television1.channel = 11;
+        television1.volume--;   television1.volume--;
+        System.out.println("television1.channel = " + television1.channel);
+        System.out.println("television1.volume = " + television1.volume);
+        
+        
 
     } // main end
 }
