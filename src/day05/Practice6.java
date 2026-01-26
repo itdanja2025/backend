@@ -1,6 +1,7 @@
 package day05;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Practice6 {
     public static void main(String[] args) {
@@ -42,6 +43,32 @@ public class Practice6 {
             if( blood.equals( "A") ){  count++; }  // 문자열 비교는 == 아니고 .equals
         }
         System.out.println("A형 : " + count + "명");
+
+        // [7]
+        int[] numbers2 = {23, 5, 67, 12, 88, 34};
+        int max = 0;
+        for( int value : numbers2 ){ // 향상된 for문
+            if( max < value ){  max = value; } // max 보다 index번째 요소값이 더 크면 대입
+        }
+        System.out.println("max = " + max); // soutv 자동완성
+        // [8]
+        String[] products = {"볼펜", "노트", "지우개"};        int[] stock = {10, 5, 20};
+        Scanner scan = new Scanner(System.in); // 제품명과 재고 입력받아
+        System.out.print("제품명 : ");         String productName = scan.next();
+        System.out.print("구매수량 : ");        int stockCount =scan.nextInt();
+        int check = 0; // 0 이면 '제품없다' 뜻 <임의>
+        for( int index = 0 ; index <= products.length-1 ; index++ ){
+            if( products[index].equals( productName ) ){ // 만약에 index번째 제품명과 입력받은 제품명과 같으면
+                if( stock[index] >= stockCount ){ // 만약에 index번째 재고가 입력받은 재고보다 이상이면
+                    stock[index] -= stockCount; // 입력받은 재고 만큼 index번째 재고 차감한다.
+                    check = 1 ; break; // 1 이면 '구매완료' 뜻
+                } // if end
+                else { check = 2; break;  } // 2 이면 '재고부족' 뜻
+            } // if end
+        } // for end
+        if( check == 0 ){ System.out.println("없는 제품 입니다.");  } // for 밖에서(끝나고) 제품없음 출력한다.
+        else if( check == 1 ){ System.out.println("구매 완료");  }
+        else if( check == 2 ){ System.out.println("재고 부족");  }
 
 
 
