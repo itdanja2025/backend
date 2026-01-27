@@ -31,9 +31,27 @@ public class BoardService {
                 } // for end
                 if( check == true ){ System.out.println("[안내] 글쓰기 성공 "); }
                 else{System.out.println("[경고] 게시물을 등록할 공간이 부족합니다. "); }
+
             }else if( ch == 2 ){ // 2 이면
+
+                for( int index = 0 ; index <= boards.length - 1 ; index++ ){
+                    Board 게시물 = boards[index]; // index번째 객체(게시물) 꺼내기
+                    if( 게시물 != null ){ // 해당 게시물이 비어있지 않으면
+                        System.out.print("작성자 : " + 게시물.작성자 );
+                        System.out.println("  내용 : " + 게시물.내용 );
+                        System.out.println("--------------------------------");
+                    }
+                } // for end
 
             } // if end
         } // for end
     } // main end
 } // class end
+
+
+
+
+
+
+
+
