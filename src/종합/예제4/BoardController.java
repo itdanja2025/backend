@@ -15,6 +15,7 @@ public class BoardController {
         } // for end
         return false; // for문 끝났음에도 저장 못했으면 false 반환
     } // method end
+
     // 기능2 : 조회 메소드
     Board[ ] doGet( ){
         return boards; // boards 반환 했으므로 리턴타입은 boards 변수의 타입은 Board[ ] 배열이다.
