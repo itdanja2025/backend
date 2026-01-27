@@ -1,5 +1,7 @@
 package day05;
 
+import java.util.Scanner;
+
 public class Practice7 {
     public static void main(String[] args) {
 
@@ -61,8 +63,42 @@ public class Practice7 {
         television1.volume--;   television1.volume--;
         System.out.println("television1.channel = " + television1.channel);
         System.out.println("television1.volume = " + television1.volume);
-        
-        
+
+        /*[문제 8] */
+        // JS : 선언적객체 : class A{ }  -> new A();  , 비선언객체 : let a = { }
+        // JAVA : 선언적객체 : class A{ } -> new A();
+        // 클래스명은 무조건 첫글자 대문자로 시작한다.
+        // 클래스(객체 표현한 설계도/논리적)
+        // vs 객체( 속성과기능 갖는 대상 -추상 , 아직 컴퓨터내 실제로 존재하기 전 )
+        // vs 인스턴스( 클래스 기반으로 (메모리)물리적 생성 )
+        new Player(); // new 인스턴스화 키워드 , 메모리 생성되면서 주소값 갖는다.
+        // - 생성된 객체는 변수에 저장하지 않으면 일정시간이 지나면 GC(쓰레기수집기) 삭제한다.
+        Player 주소록1 = new Player();   // p1 = 인스턴스(101번지)
+        주소록1.name = "손흥민";         // p1 변수가 갖는 101번지(인스턴스) 접근 하여 name 속성 접근
+        주소록1.power = 90; 주소록1.speed = 95; // .(접근연산자/참조연산자)
+        Player 주소록2 = new Player(); // p2 = 인스턴스(102번지)
+        주소록2.name = "이강인"; 주소록2.speed=85; 주소록2.power = 92;
+        System.out.println( 주소록1.name + 주소록1.power + 주소록1.speed );
+        System.out.println( 주소록2.name + 주소록2.power + 주소록2.speed );
+        // -> 생각하기 : 객체(주소값101번지) -> 객체내 속성( name 주소값101-1번지 )
+
+        // [문제 9]
+        MenuItem m1 = new MenuItem();   m1.name="김치찌개"; m1.price=8000; m1.isSignature = true;
+        MenuItem m2 = new MenuItem();   m2.name="된장찌개"; m2.price=8000; m2.isSignature = false;
+        MenuItem m3 = new MenuItem();   m3.name="계란찜"; m3.price=3000; m3.isSignature = false;
+        if( m1.isSignature == true ){ System.out.println( m1.name + m1.price); }
+        if( m2.isSignature == true ){ System.out.println( m2.name + m2.price); }
+        if( m3.isSignature == true ){ System.out.println( m3.name + m3.price); }
+
+        // [문제10]
+        UserProfile u1  = new UserProfile();
+        Scanner scan = new Scanner(System.in); // 입력객체
+        String name = scan.next(); // 입력받기
+        int age = scan.nextInt();
+        String mbti = scan.next();
+        // 입력받은 값을 객체내 저장하기 , 객체변수명(검정색).속성명(보라색) = 변수명(검정색)
+        u1.name = name;     u1.age = age;   u1.mbti = mbti;
+        System.out.printf("이름: %s  나이: %d   MBTI: %s \n" , u1.name , u1.age , u1.mbti );
 
     } // main end
 }
