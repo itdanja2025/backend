@@ -31,7 +31,7 @@ public class BoardService {
                 } // for end
                 if( check == true ){ System.out.println("[안내] 글쓰기 성공 "); }
                 else{System.out.println("[경고] 게시물을 등록할 공간이 부족합니다. "); }
-
+                // ******** 지역변수란? { } 안에서 선언(태어)한 변수는 } 끝나면 사라진다.
             }else if( ch == 2 ){ // 2 이면
 
                 for( int index = 0 ; index <= boards.length - 1 ; index++ ){
