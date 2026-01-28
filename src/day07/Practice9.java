@@ -13,6 +13,13 @@ public class Practice9 {
         Rectangle rectangle = new Rectangle( 10 , 5 ); // 생성자
         System.out.println( rectangle.getArea() );  // 메소드
 
+        // 문제3]
+        BankAccount  account
+                = new BankAccount( "111-222-3333" , "유재석",10000);
+        account.deposit( 5000 );
+        int result = account.withdraw( 3000 );
+        System.out.println("result = " + result);
+
 
 
 
@@ -20,6 +27,28 @@ public class Practice9 {
 
     } // main end
 }
+class BankAccount{ // [문제3]
+    // 멤버변수
+    String accountNumber;
+    String ownerName;
+    int balance;
+    // 생성자 : 해당 클래스{ } 안에서 빈공간을 오른쪽 클릭 -> 생성 -> 생성자
+    BankAccount(  String accountNumber , String ownerName , int balance){
+        this.accountNumber = accountNumber;
+        this.ownerName = ownerName;
+        this.balance = balance;
+    }
+    int deposit( int 입금액 ){// 메소드1 : 입금
+        balance = balance + 입금액;
+        return balance; // <---- balance 변수는 int타입으로 선언됨
+    }
+    // 메소드2 : 출금
+    int withdraw( int 출금액){
+        balance = balance - 출금액;
+        return balance;
+    }
+}
+
 class Rectangle{ // [문제2]
     int width; int height; // 멤버변수
     Rectangle( int width , int height ){ // 생성자
