@@ -25,13 +25,26 @@ public class Practice9 {
         Goods goods2 = new Goods( "콜라" , 2000 );
         System.out.println("goods1.name = " + goods1.name);
         System.out.println("goods2.name = " + goods2.name);
-
+        
+        // [문제5]
+        Member member = new Member();
+        System.out.println("member.id = " + member.id);
+        System.out.println("member.isLogin = " + member.isLogin);
 
 
 
 
 
     } // main end
+}
+class Member{ // [문제5]
+    String id; // 멤버변수 
+    boolean isLogin;
+    // 기본생성자
+    Member(){
+        this.id = "guest";
+        this.isLogin = false;
+    }
 }
 class Goods{ // [문제4]
     String name; // 멤버변수
