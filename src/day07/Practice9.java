@@ -20,12 +20,32 @@ public class Practice9 {
         int result = account.withdraw( 3000 );
         System.out.println("result = " + result);
 
+        // [문제4]
+        Goods goods1 = new Goods(); // 기본생성자
+        Goods goods2 = new Goods( "콜라" , 2000 );
+        System.out.println("goods1.name = " + goods1.name);
+        System.out.println("goods2.name = " + goods2.name);
+
 
 
 
 
 
     } // main end
+}
+class Goods{ // [문제4]
+    String name; // 멤버변수
+    int price;
+    // 1. 기본생성자
+    Goods( ){
+        this.name = "미정";
+        this.price = 0;
+    }
+    // 2. 일반생성자
+    Goods( String name , int price ){ // 오버로드 : 동일한 생성자명으로 매개변수에 따라 여러개 선언
+        this.name = name;
+        this.price = price;
+    }
 }
 class BankAccount{ // [문제3]
     // 멤버변수
