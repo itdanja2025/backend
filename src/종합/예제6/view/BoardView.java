@@ -25,7 +25,6 @@ public class BoardView {
             System.out.println("1.게시물쓰기 2.게시물출력");
             System.out.println("====================================== ");
             System.out.print("선택>");
-            Scanner scan = new Scanner(System.in);
             int ch = scan.nextInt();
             if( ch == 1 ){ writeView(); } // 만약에 1번 입력하면 쓰기 페이지로 이동
             else if( ch == 2 ){ printView(); } // 아니고 2번 입력하면 전체조회 페이지로 이동
@@ -35,6 +34,7 @@ public class BoardView {
 
     // 1) 등록 입출력 화면
     public void writeView( ){
+        scan.nextLine();
         System.out.print("내용 : ");  String content = scan.nextLine();
         System.out.print("작성자 : "); String writer = scan.nextLine();
         // 1.컨트롤러에게 입력받은 content , writer 전달하여 결과 받아오기
