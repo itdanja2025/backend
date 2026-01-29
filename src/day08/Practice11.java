@@ -22,8 +22,32 @@ public class Practice11 {
         list1.remove( 2 ); // 2번 인덱스인 "C" 요소 삭제
         System.out.println("list1 = " + list1); //  [A, B, D, E]
 
+        //[문제 5] .add( 인덱스 , 새로운값 )
+        ArrayList<String> list2 = new ArrayList<>();
+        list2.add( "자바");       list2.add( "파이썬");       list2.add( "C++");
+        list2.add( 1 , "자바스크립트");
+        System.out.println("list2 = " + list2); // list2 = [자바, 자바스크립트, 파이썬, C++]
+        // [문제6]
+        ArrayList< Book > library = new ArrayList<>();
+        library.add( new Book( "책제목1" , "저자1") );   library.add( new Book( "책제목2" , "저자2") );
+        library.add( new Book( "책제목3" , "저자3") );
+        for( Book book : library ){ // for( 항목타입 반복변수명 : 리스트변수명 ){ }
+            System.out.println("book = " + book);
+        }
     } // main end
+} // class end
+class Book{
+    private String title;  private String author; // 멤버변수
+    public Book(String title, String author) { this.title = title; this.author = author; } // 생성자
+    @Override  public String toString() { // toString
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                '}';
+    }
 }
+
+
 /*[실습] * 제출용 */
 
 /*[문제 1] String 타입의 요소를 저장할 수 있는 ArrayList를 nameList 라는 이름으로 생성하세요.
