@@ -85,19 +85,7 @@ create table product(
     constraint foreign key( mno ) references member( mno ) on delete cascade
 );
 select * from product;
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- ER 다이어그램 : 여러 객체 들 간의 관계 시각적 , ERD 다이어그램 : 데이터베이스 테이블 간의 관계 시각적
 
 
 
