@@ -28,6 +28,53 @@ insert into test values( 6 , "하하" , 70 ) , ( 7 , "바나나" , 31 ) , ( 8 , 
 # 확인 
 select * from test;
 
+-- [2] select , 레코드 조회 , 주의할점 : 조회 결과테이블 과 원본테이블 상관없다.
+#1) select * from 테이블명;
+select * from test;
+#2) select 속성명1 , 속성명2 , 속성명3 from 테이블명;
+select mname from test;
+select mname , mcount from test;
+#3) select 속성명 from 테이블명 where 조건절 
+select * from test where mname = "유재석"; -- SQL에서는 = 같다 기호로 사용된다. VS = 대입
+select * from test where mcount >= 40; -- 조건절에서는 연산 이용한 조회가 가능하다.
+
+-- [3] update , 레코드의 값 수정 , mysql workbench safeMode해제 : 
+set SQL_SAFE_UPDATES = 0; -- 해제 : 수정 과 삭제는 위험 하므로 workbench에서는 수정/삭제 차단 상태
+set SQL_SAFE_UPDATES = 1; -- 활성화
+#1) update 테이블명 set 수정할속성명1 = 수정할값 , 수정할속성명2 = 수정할값 where 조건 
+update test set mcount = 0; -- where조건 이 없으면 전체 수정 
+#2) 일반적으로 조건 수정 이다.
+update test set mcount = 10 where mname = "유재석"; -- mname 속성값이 '유재석' 이면 mcount 속성값을 10으로 변경해라.
+update test set mcount = 20 , mname = "강호동2" where mno = 2;
+-- mno 속성값이 2 이면 mcount속성값을 20 , mname속성값을 '강호동2' 변경해라.
+
+-- [4] delete , 레코드 삭제 , delete : 레코드 삭제 VS truncate : 모든레코드삭제 VS drop : 테이블/데이터베이스 삭제
+# 1) delete from 테이블명 where 조건 
+delete from test where mno = 2; -- mno속성값이 2 이면 (강호동레코드) 삭제 해라.
+# 2) 
+delete from test; -- 조건 이 없으므로 모든 레코드 삭제 		 - DML 취소가능 
+truncate table test; -- 해당 테이블에 모든 내용(레코드) 삭제 - DDL 취소불가능 
+drop table test; -- 해당 테이블 삭제 
+/*
+	DDL : 데이터베이스 정의 어 , 뒤로가기(롤백 = 트랜잭션) 불가능 
+		create , drop , truncate 
+    DML : 데이터베이스 조작 어 , 뒤로가기(롤백 = 트랜잭션) 가능 
+		insert , select , update , delete 
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
