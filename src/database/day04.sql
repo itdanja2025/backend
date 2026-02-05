@@ -78,9 +78,29 @@ select mid , count(*) from buy group by mid;
 # 1) 그룹 전 조건 where 	, 구매수량(그룹전에 존재하는 속성)이 3 이상인 
 select * from buy where bamount > 3;
 # 2) 그룹 후 조건 having  , 총구매금액(그룹후에 존재하는 속성)이 1000 이상인
-select mid , sum( bamount * bprice ) as 총구매금액 
-	from buy group by mid having 총구매금액 > 1000 ;
+select mid , sum( bamount * bprice ) as 총구매금액 from buy group by mid having 총구매금액 > 1000 ;
 # 작성순서 -- select 속성명 from 테이블명 where 일반조건절 group by 그룹기준 having 그룹조건절 
+
+# [5] order by : 정렬 , asc 오름차순(기본값) , desc 내림차순 ,
+# 주의할점 : 다중 정렬은 order by 1차정렬기준 , 2차정렬기준
+	# -> 1차 정렬 후 동일한 값 끼리의 2차 정렬 실행 
+select * from member order by mdebut asc;
+select * from member order by mdebut desc;
+	# -> 1차 정렬에서 maddr(주소) 정렬 한 후 동일한 maddr(주소) 끼리 mdebut(날짜) 정렬한다.
+select * from member order by maddr desc , mdebut asc;
+
+# [6] limit : 조회 결과 제한(검색/페이징) / limit 시작번호 , 개수 
+select * from member limit 2; 		-- 조회 결과 위에서 2개만 조회 
+select * from member limit 0,2 ;	-- 조회 결과 0(첫번째레코드) 부터 2개 조회한다.
+select * from member limit 0,5 ;	-- 1페이지, 5개 조회 ( 1페이지 )
+select * from member limit 5,5 ;	-- 2페이지, 5개 조회 ( 2페이지 )
+
+# select 작성 규칙/순서
+# select 속성명 from 테이블명 where 일반조건 group by 그룹기준 having 그룹조건 order by 정렬기준 limit 개수
+# select 처리 순서 
+# from -> where -> group by -> having -> order by -> limit
+
+
 
 
 
