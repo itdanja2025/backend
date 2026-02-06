@@ -22,7 +22,7 @@ public class BoardView {
                 System.out.print("선택>"); int ch = scan.nextInt();
                 if (ch == 1) { write(); }
                 else if (ch == 2) {}
-                else if (ch == 3) {}
+                else if (ch == 3) { update();}
                 else if (ch == 4) { delete();}
                 else { System.out.println("[경고] 없는 기능 번호 입니다. "); }
             }catch ( InputMismatchException e ){
@@ -49,6 +49,15 @@ public class BoardView {
         boolean result = bc.delete( bno );
         if( result ){ System.out.println("[안내] 게시물 삭제 완료");}
         else{System.out.println("[경고] 게시물 삭제 실패 또는 없는 게시물 번호 입니다.");}
+    }
+    // [3] 게시물 수정 view
+    public void update( ){
+        System.out.print("수정할 게시물번호 : "); int bno = scan.nextInt();
+        scan.nextLine();
+        System.out.print("수정할 내용 : ");      String bcontent = scan.nextLine();
+        boolean result = bc.update( bno , bcontent );
+        if( result ){ System.out.println("[안내] 게시물 수정 완료");}
+        else{System.out.println("[경고] 게시물 수정 실패 또는 없는 게시물 번호 입니다.");}
     }
 } // class end
 
