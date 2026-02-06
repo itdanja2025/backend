@@ -14,4 +14,9 @@ public class BoardController {
         boolean result = bd.write( bcontent , bwriter );
         return result;
     }
+    // [4] 게시물 삭제 controller
+    public boolean delete( int bno ){
+        boolean result = bd.delete( bno );
+        return result;
+    }
 } // class end

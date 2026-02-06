@@ -23,7 +23,7 @@ public class BoardView {
                 if (ch == 1) { write(); }
                 else if (ch == 2) {}
                 else if (ch == 3) {}
-                else if (ch == 4) {}
+                else if (ch == 4) { delete();}
                 else { System.out.println("[경고] 없는 기능 번호 입니다. "); }
             }catch ( InputMismatchException e ){
                 System.out.println("[경고] 잘못된 입력 방식 입니다.[재입력]");
@@ -41,6 +41,14 @@ public class BoardView {
         boolean result = bc.write( bcontent , bwriter );
         if( result ){ System.out.println("[안내] 게시물 등록 완료");}
         else{System.out.println("[경고] 게시물 등록 실패");}
+    }
+    // [4] 게시물 삭제 view
+    public void delete(){
+        System.out.print("삭제할게시물번호 : ");
+        int bno = scan.nextInt();
+        boolean result = bc.delete( bno );
+        if( result ){ System.out.println("[안내] 게시물 삭제 완료");}
+        else{System.out.println("[경고] 게시물 삭제 실패 또는 없는 게시물 번호 입니다.");}
     }
 } // class end
 
