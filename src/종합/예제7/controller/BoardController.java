@@ -8,4 +8,10 @@ public class BoardController {
     public static BoardController getInstance(){ return instance;}
 
     private BoardDao bd = BoardDao.getInstance();
-}
+
+    // [1] 게시물 등록 controller
+    public boolean write( String bcontent , String bwriter ){
+        boolean result = bd.write( bcontent , bwriter );
+        return result;
+    }
+} // class end

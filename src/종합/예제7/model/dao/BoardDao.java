@@ -2,6 +2,8 @@ package 종합.예제7.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class BoardDao {
     private BoardDao(){ connect(); }
@@ -23,4 +25,38 @@ public class BoardDao {
             System.out.println("[시스템경고] 데이터베이스 연동 실패 : 관리자에게 문의");
         }
     }
+
+    // [1] 게시물 등록 dao
+    public boolean write( String bcontent , String bwriter ){
+        try {
+            // 1) SQL 작성한다. 저장 -> C -> INSERT ,  ?와일드카드 기호 로 매개변수값이 들어갈 자리 뜻한다.
+            String sql = "insert into board( bcontent , bwriter ) values( ? , ? )";
+            // 2) 연동된(conn) 인터페이스에  내가 작성한 SQL 기재한다. 반환 preparedStatement 준비된 *일반예외
+            PreparedStatement ps = conn.prepareStatement(sql);
+            // 3) SQL이 기재된(ps) 인터페이스에 sql매개변수 대입 , ps.set타입명( ?순서번호 , 값 );
+            ps.setString( 1 , bcontent ); // String 타입으로 SQL내 1번 ?에 bcontent 값 대입한다.
+            ps.setString( 2 , bwriter ); // String 타입으로 SQL내 2번 ?에 bwriter 값 대입한다.
+            // 4) 매개변수 까지 대입하여 준비가 끝났으면 SQL 실행 , ps.executeUpdate(); 반환값은 반영된 레코드수
+            int count = ps.executeUpdate();
+            // 5) SQL 실행 후 반영된 레코드 수 에 따른 결과 제어
+            if( count == 1 ){ return true; } // 등록한 레코드 수 가 1이면 등록성공
+            else{ return false; } // 아니면 실패
+        }catch ( SQLException e ){
+            System.out.println("[시스템오류] SQL 문법 문제 발생 : "+ e );
+        }
+        return false; // 실패
+    } // f end
 } // class end
+
+
+
+
+
+
+
+
+
+
+
+
+

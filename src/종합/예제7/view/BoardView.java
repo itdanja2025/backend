@@ -20,7 +20,7 @@ public class BoardView {
                 System.out.println("1.게시물쓰기 2.게시물출력 3.게시물수정 4.게시물삭제");
                 System.out.println("====================================== ");
                 System.out.print("선택>"); int ch = scan.nextInt();
-                if (ch == 1) {}
+                if (ch == 1) { write(); }
                 else if (ch == 2) {}
                 else if (ch == 3) {}
                 else if (ch == 4) {}
@@ -33,6 +33,15 @@ public class BoardView {
             }
         } // for end
     } // m end
+
+    // [1] 게시물 등록 view
+    public void write(){  scan.nextLine();
+        System.out.print("내용 : ");  String bcontent = scan.nextLine();
+        System.out.print("작성자 : "); String bwriter = scan.next();
+        boolean result = bc.write( bcontent , bwriter );
+        if( result ){ System.out.println("[안내] 게시물 등록 완료");}
+        else{System.out.println("[경고] 게시물 등록 실패");}
+    }
 } // class end
 
 
