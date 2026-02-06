@@ -1,6 +1,9 @@
 package 종합.예제7.controller;
 
 import 종합.예제7.model.dao.BoardDao;
+import 종합.예제7.model.dto.BoardDto;
+
+import java.util.ArrayList;
 
 public class BoardController {
     private BoardController(){}
@@ -24,4 +27,24 @@ public class BoardController {
         boolean result = bd.update( bno , bcontent );
         return result;
     }
+    // [2] 게시물 전체 조회 controller , 여러개 레코드 조회 -> ArrayList , 한개 레코드 조회 -> dto
+    public ArrayList<BoardDto> findAll(){
+        ArrayList<BoardDto> result = bd.findAll();
+        return result;
+    }
+
 } // class end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

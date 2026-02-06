@@ -1,9 +1,9 @@
 package 종합.예제7.model.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import 종합.예제7.model.dto.BoardDto;
+
+import java.sql.*;
+import java.util.ArrayList;
 
 public class BoardDao {
     private BoardDao(){ connect(); }
@@ -77,7 +77,26 @@ public class BoardDao {
         return false; // 실패
     } // m end
 
-
+    // [2] 게시물 전체 조회 dao
+    public ArrayList<BoardDto> findAll(){
+        ArrayList<BoardDto> boards = new ArrayList<>(); // [*]조회 결과인 레코드(dto)들을 저장할 리스트/배열 선언
+        try{ String sql = "select * from board";// 1] SQL 작성한다.
+            PreparedStatement ps = conn.prepareStatement(sql);// 2] SQL 기재한다.
+            // 3] SQL 매개변수 대입한다. ? 없으므로 생략
+            ResultSet rs = ps.executeQuery();// 4] sql 실행 후 몇개 조회 했는지가 아닌 조회 결과 테이블 제어
+                // executeUpdate():insert/update/delete vs executeQuery() : select
+                // ResultSet : select 결과물을 제어 하는 인터페이스 ,
+                    // rs.next() : 조회 결과에서 다음 레코드 1번 이동 , 만약에 레코드가 10개이면 next 10번
+            while( rs.next() ){ // while( 논리 ){ } 반복문  , *레코드 1개씩 순회*   1개레코드 -> 1개DTO
+                // rs.get타입명( SQL속성명 ) : 현재 레코드의 속성 값 호출
+                int bno = rs.getInt( "bno" );               String bcontent = rs.getString( "bcontent");
+                String bwriter = rs.getString( "bwriter");  String bdate = rs.getString( "bdate");
+                BoardDto boardDto = new BoardDto( bno , bcontent , bwriter , bdate );  // DTO(객체) 만들기
+                boards.add( boardDto );  // 리스트(배열)에 생성한 DTO(레코드) 저장
+            } // w end
+        }catch(SQLException e ){System.out.println("[시스템오류] SQL 문법 문제 발생 : "+ e ); }
+        return boards; // 리스트(배열) 반환 한다.
+    } // m end
 } // class end
 
 
