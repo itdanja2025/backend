@@ -56,17 +56,16 @@ select 제품명 from product; -- 1) 모든 제품의 제품명
 select 재고수량 from stock;-- 2) 등록된 재고수량
 select p.제품명 , s.재고수량 from product p inner join stock s on p.제품번호_pk = s.제품번호_fk; -- 3)
 
-
-
-
-
-
-
-
-
 -- [문제 4] '그램 15인치' 제품의 모든 재고등록날짜와 재고수량을 조회하세요. (조회결과: 2개 레코드)
+select s.재고등록날짜 , s.재고수량 from product p inner join stock s 
+	on p.제품번호_pk = s.제품번호_fk where p.제품명 = '그램 15인치';
 
 -- [문제 5] 모든 제품의 제품명, 카테고리명, 재고수량을 한 번에 조회하세요. (3개 테이블 조인) (조회결과: 8개 레코드)
+-- pcategory( 카테고리번호 ) <--> product( 카테고리번호 ) , product ( 제품번호 ) <--> stock ( 제품번호 )
+select p.제품명 , pc.카테고리명 , s.재고수량 from 
+	pcategory pc inner join product p on pc.카테고리번호_pk = p.카테고리번호_fk
+    inner join stock s on p.제품번호_pk = s.제품번호_fk;
+
 
 -- [문제 6] 모든 카테고리의 카테고리명과 해당 카테고리에 속한 제품명을 조회하세요. 만약 카테고리에 속한 제품이 없더라도 카테고리명은 모두 표시되도록 하세요. (조회결과: 7개 레코드)
 
@@ -75,5 +74,9 @@ select p.제품명 , s.재고수량 from product p inner join stock s on p.제�
 -- [문제 8] 각 카테고리별로 총 재고 수량의 합계를 카테고리명과 함께 조회하세요. (조회결과: 3개 레코드)
 
 -- [문제 9] 각 제품별로 총 재고 수량을 조회하고, 총 재고 수량이 많은 순서대로 정렬하여 제품명과 총재고수량을 표시하세요. (조회결과: 6개 레코드)
+
+
+
+
 
 
