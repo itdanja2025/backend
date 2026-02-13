@@ -24,11 +24,22 @@ public class Exam1 {
                 1. 목적 : *병렬처리*, 동시에 여러 작업 처리한다.
                 2. 사용처 : 웹/앱 , 채팅 , 첨부파일 등등
                 3. 구현방법
-                    방안1)
+                    방법1) 익명구현체
                         Runnable runnable = new Runnable(){ @Override public void run(){ 작업스레드코드 } }
                         Thread thread = new Thread( runnable );
                         thread.start()
-
+                    방법2) 구현체
+                        class 작업스레드 implements Runnable{ @Override public void run(){ 작업스레드코드 } }
+                        작업스레드 변수 = new 작업스레드();
+                        Thread thread = new Thread( 변수 );
+                        thread.start()
+                    방법3) 상속
+                        class 작업스레드 extends Thread{ @Override public void run(){ 작업스레드코드 } }
+                        작업스레드 변수 = new 작업스레드();
+                        변수.start();
+                4. 주요 메소드
+                    Runnable 인터페이스 : run추상메소드  , 생성한 작업스레드가 처리할 코드집합
+                    Thread 클래스 : start메소드 ,  구현된 run 메소드 실행 메소드
         */
         Toolkit toolkit = Toolkit.getDefaultToolkit(); // 자바의 UI 제공하는 클래스
 
