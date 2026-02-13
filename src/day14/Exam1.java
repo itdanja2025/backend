@@ -54,8 +54,28 @@ public class Exam1 {
         }; // 익명구현체 } 닫기 뒤에 꼭 ;세미콜론 넣기
         // [[ MAIN Thread ]]
         Thread thread1 = new Thread( runnable ); // 3) 익명구현체 인터페이스를 Thread 객체 대입
-        // [[ MAIN Thread --> Task1 Thread  ]]
+        // [[ MAIN Thread --> Task Thread  ]]
         thread1.start(); // 4) 스레드 객체가 start() 메소드를 호출하면 구현한 run메소드가 실행된다.
+
+        for( int i = 1 ; i <= 5 ; i++ ){ // [[ MAIN Thread ]]
+            System.out.println("띵");
+            try{ Thread.sleep( 1000 ); }catch ( Exception e ){ }
+        }
+
+        //[3] 멀티 스레드2
+        // [[ MAIN Thread ]]
+        SoundBeep soundBeep = new SoundBeep();
+        Thread thread2 = new Thread( soundBeep );
+        thread2.start(); // [[ MAIN Thread --> Task Thread  ]]
+
+        for( int i = 1 ; i <= 5 ; i++ ){ // [[ MAIN Thread ]]
+            System.out.println("띵");
+            try{ Thread.sleep( 1000 ); }catch ( Exception e ){ }
+        }
+        // [4] 멀티 스레드3
+        // [[ MAIN Thread ]]
+        SoundBeep2 thread3 = new SoundBeep2();
+        thread3.start(); // [[ MAIN Thread --> Task Thread  ]]
 
         for( int i = 1 ; i <= 5 ; i++ ){ // [[ MAIN Thread ]]
             System.out.println("띵");
@@ -64,12 +84,34 @@ public class Exam1 {
 
 
 
-
-
-
-
     }
 } // class end
+
+class SoundBeep implements Runnable{
+    // * Runnable 인터페이스 구현
+    // * run 추상메소드 구현 -> 추가 작업스레드가 처리할 코드
+    @Override public void run() {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        for( int i = 1 ; i <= 5 ; i++ ){
+            toolkit.beep();
+            try{ Thread.sleep( 1000 ); }catch ( Exception e ){ }
+        }
+    }
+}
+class SoundBeep2 extends Thread{
+    // * Thread 클래스 상속
+    // * run 메소드 재정의 -> 추가 작업스레드가 처리할 코드
+    @Override public void run() {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        for( int i = 1 ; i <= 5 ; i++ ){
+            toolkit.beep();
+            try{ Thread.sleep( 1000 ); }catch ( Exception e ){ }
+        }
+    }
+}
+
+
+
 
 
 
