@@ -1,8 +1,6 @@
 package day15;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class Exam3 {
     public static void main(String[] args) {
@@ -31,6 +29,7 @@ public class Exam3 {
         while ( iterator.hasNext() ){ // ,hasNext() : 다음 요소가 존재하면 true 없으면 false 반환
             System.out.println( iterator.next() );// 다음 요소(값) 반환
         }
+        // 활용처: JDBC( ResultSet )
         // ========================================================== //
         // 집합(SET) 과 FOR문 관계
         // 1) 일반 for *불가능*
@@ -39,11 +38,19 @@ public class Exam3 {
         // 3) forEach
         set1.forEach( (str) -> { System.out.println( str ); });
 
-        // 활용처: JDBC( ResultSet )
+        // ========================================================== //
+        // Set 인터페이스
+        Set< Integer > set2 ;
+        set2 = new HashSet<>();
 
-
-
-
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add( 50 );  set.add( 30 ); set.add( 45 );
+        System.out.println("set = " + set); // [30, 45, 50]
+        // 이진트리 란? 각각의 노드/가지(값)이 최대 2개의 노드/가지(값) 연결 하는 구조
+        // 현재 노드/가지 보다 작은값이 추가되면 왼쪽노드/가지 에 추가 , 큰값이 추가되면 오른쪽노드/가지 에 추가 구조
+        // 기본값은 오름차순 , .descendingSet() 내림차순
+        System.out.println( set.descendingSet() ); // [50, 45, 30]
+        // 활용처 : 정렬( 검색 최적화 )
 
     } // main end
 } // class end
