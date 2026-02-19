@@ -81,7 +81,7 @@ public class Exam2 {
         System.out.println( stack.pop() ); // 값 제거 : pop
         System.out.println( stack.pop() ); // 값 제거 : pop
         // Stack 스택 자료 구조란? 입구와출구가 하나라서 마지막에 들어온값/추가 이 먼저 나간다/제거 . LIFO( LastIn FirstOut )
-        // 예] 동전케이스 , 프링글스 과자통 등
+        // 예] 동전케이스 , 프링글스 과자통, ctrl+z(뒤로가기) 등
 
     } // main end
 } // class end
