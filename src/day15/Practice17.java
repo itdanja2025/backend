@@ -55,22 +55,46 @@ public class Practice17 {
         map.keySet().forEach( ( key ) -> {  // 방법2] 변수명.forEach( (반복변수) -> { 실행문; } );
             System.out.println("key  +\":\"+ map.get(value)  = " + key  +":"+ map.get(key) );
         } );
-        /*-------------------------------------------
-[문제 5] Map 점수 관리 CRUD (put/get/remove/size)
-상황: 학생 이름(key)과 점수(value)를 Map으로 관리한다.
-요구사항(구현):
-- Map<String,Integer> map = new HashMap<>();
-- put:
-  유재석=95, 강호동=100, 신동엽=78, 유재석=67(키 중복 시 값 변경 확인), 서장훈=100
-- get("유재석") 출력
-- size() 출력
-- remove("유재석") 후 map 전체 출력
-출력 예시(순서는 달라도 됨):
-[get 유재석] 67
-[size] 4
-[remove 후 map] {서장훈=100, 강호동=100, 신동엽=78}
--------------------------------------------*/
 
+        // [문제7] 자바 외 다른 곳에서 데이터가 오는 경우 정리 - 데이터 전처리( 현재 상황에 맞게 데이터 수정 )
+        Map<String, String> jsonMap = new HashMap<>();
+        String json = "{\"name\":\"유재석\",\"age\":45,\"city\":\"서울\"}";
+        json = json.replace( "{" , "" ); // { } 제거 , 문자열.replace( "기존문자" , "새로운문자" ); // * 치환/수정 결과를 문자열에 대입한다.
+        json = json.replace( "}" , "");         System.out.println("json = " + json); // 확인
+        String[] jsonAry = json.split(","); // 문자열.split( "기준문자" ) : 문자열내 "기준문자"기준으로 분리하여 String[] 반환
+        for( int index = 0 ; index <= jsonAry.length-1 ; index++ ){ // 분리된 조각들을 하나씩 확인
+            String str = jsonAry[index];    // System.out.println("str = " + str);
+            String[] strAry = str.split( ":" );// : 기준 split(2개로만)
+            // 예] strAry[0] = "name" , strAry[1] = "유재석" ,  즉] 0번인덱스는 key(속성) , 1번인덱스 value(값)
+            //  - 큰따옴표 " 제거 ,  " " 큰따옴표 안에서 큰따옴표 표현할때 이케이프문자(제어문자) \" \n \t \\
+            jsonMap.put( strAry[0].replaceAll("\"" , "") , strAry[1] );
+        } // for end
+        System.out.println("jsonMap = " + jsonMap);
+        System.out.println("jsonMap.get(\"name\") = " + jsonMap.get("name"));
+        System.out.println("jsonMap.get(\"age\")  = " + jsonMap.get("age") );
+        jsonMap.keySet().forEach( (key) -> {
+            System.out.println("key  +\":\"+ jsonMap.get(value)  = " + key  +":"+ jsonMap.get(key) );
+        });
+
+        // [문제 8]
+        ArrayList<Map<String,Object>> stockList = new ArrayList<>();
+        // 주의 : new Dto 1개 == new Map 1개 , .put 1개 == 속성 1개
+        Map< String , Object> map1 = new HashMap<>();
+        map1.put( "name" , "삼성전자");     map1.put( "price" , "72000");   map1.put( "volume" , "1500000");
+        stockList.add( map1 );
+        Map< String , Object > map2 = new HashMap<>();
+        map2.put( "name" , "카카오");     map2.put( "price" , "52000");   map2.put( "volume" , "800000");
+        stockList.add( map2 );
+        Map< String , Object > map3 = new HashMap<>();
+        map3.put( "name" , "네이버");     map3.put( "price" , "210000");   map3.put( "volume" , "300000");
+        stockList.add( map3 );
+        System.out.println("stockList = " + stockList);
+        stockList.forEach( ( stock ) -> {
+            System.out.printf( "종목명 : %s / 가격 : %s / 거래량 : %s \n" ,
+                    stock.get("name") , stock.get("price") , stock.get("volume"));
+        } );
+
+        // 종목명: 네이버 / 가격: 210000 / 거래량: 300000
     } // main end
 } // class end
 
